@@ -8,13 +8,13 @@ import {Toast} from './toast';
     selector: 'toaster-container',
     template: `
         <div id="toast-container" [ngClass]="[toasterconfig.positionClass, toasterconfig.animationClass]" class="ng-animate">
-            <div *ngFor="#toast of toasts" class="toast" [ngClass]="toasterconfig.typeClasses[toast.type]" (click)="click(toast)" 
+            <div *ngFor="let toast of toasts" class="toast" [ngClass]="toasterconfig.typeClasses[toast.type]" (click)="click(toast)"
                 (mouseover)="stopTimer(toast)" (mouseout)="restartTimer">
                 <div *ngIf="toast.showCloseButton" (click)="click(toast, true)" [innerHTML]="toast.closeHtml"></div>
                 <i class="toaster-icon" [ngClass]="toasterconfig.iconClasses[toast.type]"></i>
                 <div [ngClass]="toast.toasterConfig.titleClass">{{toast.title}}</div>
                 <div [ngClass]="toast.toasterConfig.messageClass" [ngSwitch]="toast.bodyOutputType">
-                    <div *ngSwitchWhen="bodyOutputType.Component" id="componentBody"></div> 
+                    <div *ngSwitchWhen="bodyOutputType.Component" id="componentBody"></div>
                     <div *ngSwitchWhen="bodyOutputType.TrustedHtml" [innerHTML]="toast.html"></div>
                     <div *ngSwitchWhen="bodyOutputType.Default">{{toast.body}}</div>
                 </div>
@@ -52,8 +52,8 @@ export class ToasterContainerComponent {
             this.toasterconfig = new ToasterConfig();
         }
     }
-    
-    
+
+
     // event handlers
     click(toast: Toast, isCloseButton?: boolean) {
         if (this.toasterconfig.tapToDismiss || (toast.showCloseButton && isCloseButton)) {
@@ -91,8 +91,8 @@ export class ToasterContainerComponent {
             this.removeToast(toast);
         }
     }
-    
-    
+
+
     // private functions
     private registerSubscribers() {
         this.addToastSubscriber = this.toasterService.addToast.subscribe((toast) => {
@@ -139,7 +139,7 @@ export class ToasterContainerComponent {
         if (toast.bodyOutputType === this.bodyOutputType.Component) {
             setTimeout(() => {
                 this.dcl.loadAsRoot(toast.body, '#componentBody', null);
-                
+
                 // TODO: Necessary per https://github.com/angular/angular/issues/6223
                 // until loadAsRoot matches loadIntoLocation behavior
                 this.changeDetectorRef.detectChanges();
@@ -187,7 +187,7 @@ export class ToasterContainerComponent {
         this.toasts.splice(index, 1);
         if (toast.timeoutId) {
             window.clearTimeout(toast.timeoutId);
-            toast.timeoutId = null; 
+            toast.timeoutId = null;
         }
         if (toast.onHideCallback) toast.onHideCallback(toast);
     }

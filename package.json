@@ -32,24 +32,23 @@
   },
   "typings": "./angular2-toaster.d.ts",
   "dependencies": {
-    "angular2": "^2.0.0-beta.14",
-    "rxjs": "5.0.0-beta.2"
+    "angular2": "^2.0.0-beta.17",
+    "rxjs": "5.0.0-beta.7"
   },
   "devDependencies": {
     "coveralls": "^2.11.9",
     "cpx": "^1.3.1",
-    "es6-promise": "3.1.2",
     "es6-shim": "0.35.0",
     "http-server": "^0.9.0",
-    "jasmine-core": "2.4.1",
+    "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^0.2.3",
     "karma-coverage": "^0.5.5",
     "karma-jasmine": "^0.3.8",
     "reflect-metadata": "0.1.2",
-    "remap-istanbul": "^0.5.1",
-    "systemjs": "^0.19.25",
-    "typescript": "1.8.9",
-    "zone.js": "0.6.11"
+    "remap-istanbul": "^0.6.3",
+    "rxjs": "^5.0.0-beta.7",
+    "typescript": "^1.8.10",
+    "zone.js": "^0.6.12"
   }
 }
